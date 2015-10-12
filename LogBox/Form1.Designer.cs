@@ -32,6 +32,9 @@
             this.textBox = new System.Windows.Forms.TextBox();
             this.addMessageButton = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.showLogsButton = new System.Windows.Forms.Button();
+            this.stateLabel = new System.Windows.Forms.Label();
+            this.labelTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // textBox
@@ -59,11 +62,30 @@
             this.notifyIcon.Text = "LogBox";
             this.notifyIcon.Visible = true;
             // 
+            // showLogsButton
+            // 
+            this.showLogsButton.Location = new System.Drawing.Point(116, 126);
+            this.showLogsButton.Name = "showLogsButton";
+            this.showLogsButton.Size = new System.Drawing.Size(75, 23);
+            this.showLogsButton.TabIndex = 2;
+            this.showLogsButton.Text = "表示";
+            this.showLogsButton.UseVisualStyleBackColor = true;
+            // 
+            // stateLabel
+            // 
+            this.stateLabel.AutoSize = true;
+            this.stateLabel.Location = new System.Drawing.Point(12, 132);
+            this.stateLabel.Name = "stateLabel";
+            this.stateLabel.Size = new System.Drawing.Size(0, 12);
+            this.stateLabel.TabIndex = 3;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 162);
+            this.Controls.Add(this.stateLabel);
+            this.Controls.Add(this.showLogsButton);
             this.Controls.Add(this.addMessageButton);
             this.Controls.Add(this.textBox);
             this.Name = "mainForm";
@@ -79,6 +101,9 @@
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Button addMessageButton;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.Button showLogsButton;
+        private System.Windows.Forms.Label stateLabel;
+        private System.Windows.Forms.Timer labelTimer;
     }
 }
 

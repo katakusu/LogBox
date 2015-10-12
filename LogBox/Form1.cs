@@ -23,7 +23,23 @@ namespace LogBox
 
         private void addMessageButton_Click(object sender, EventArgs e)
         {
+            using (var conn = new SQLiteConnection("Data Source=" + sqliteDB)) 
+            {
+                conn.Open();
+                using (SQLiteTransaction sqlt = conn.BeginTransaction()) 
+                {
+                    using (SQLiteCommand command = conn.CreateCommand()) 
+                    {
+                        command.CommandText
+                            = "insert into logs (message, posttime) values ('"+textBox.Text+"', DATETIME('now', 'localtime'));";
+                        command.ExecuteNonQuery();
+                    }
+                    sqlt.Commit();
+                }
+                conn.Close();
+            }
 
+            textBox.ResetText();
         }
 
         private void mainForm_Shown(object sender, EventArgs e)
