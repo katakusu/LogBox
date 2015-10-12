@@ -23,6 +23,8 @@ namespace LogBox
 
         private void addMessageButton_Click(object sender, EventArgs e)
         {
+            textBox.ReadOnly = true;
+            stateLabel.Text = "書き込み中……";
             using (var conn = new SQLiteConnection("Data Source=" + sqliteDB)) 
             {
                 conn.Open();
@@ -40,6 +42,10 @@ namespace LogBox
             }
 
             textBox.ResetText();
+            stateLabel.Text = "書き込み完了";
+            textBox.ReadOnly = false;
+            textBox.Focus();
+            labelTimer.Start();
         }
 
         private void mainForm_Shown(object sender, EventArgs e)
@@ -70,6 +76,11 @@ namespace LogBox
             {
                 addMessageButton.Enabled = false;
             }
+        }
+
+        private void labelTimer_Tick(object sender, EventArgs e)
+        {
+            stateLabel.ResetText();
         }
     }
 }

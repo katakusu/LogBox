@@ -79,6 +79,11 @@
             this.stateLabel.Size = new System.Drawing.Size(0, 12);
             this.stateLabel.TabIndex = 3;
             // 
+            // labelTimer
+            // 
+            this.labelTimer.Interval = 1000;
+            this.labelTimer.Tick += new System.EventHandler(this.labelTimer_Tick);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
