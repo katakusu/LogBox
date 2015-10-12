@@ -43,5 +43,17 @@ namespace LogBox
                 }
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox.TextLength > 0) 
+            {
+                addMessageButton.Enabled = true;
+            }
+            else
+            {
+                addMessageButton.Enabled = false;
+            }
+        }
     }
 }
