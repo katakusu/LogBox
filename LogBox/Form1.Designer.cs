@@ -66,6 +66,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "mainForm";
             this.Text = "LogBox";
+            this.Shown += new System.EventHandler(this.mainForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace LogBox
 {
     public partial class mainForm : Form
     {
+        string sqliteDB = "logs.db";
+
         public mainForm()
         {
             InitializeComponent();
@@ -21,6 +24,24 @@ namespace LogBox
         private void addMessageButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void mainForm_Shown(object sender, EventArgs e)
+        {
+            if (!File.Exists(sqliteDB)) 
+            {
+                using (var conn = new SQLiteConnection("Data Source=" + sqliteDB)) 
+                {
+                    conn.Open();
+                    using (SQLiteCommand command = conn.CreateCommand())
+                    {
+                        command.CommandText =
+                            "CREATE TABLE logs (id INTEGER PRIMARY KEY AUTOINCREMENT, message TEXT, posttime DATETIME NOT NULL);";
+                        command.ExecuteNonQuery();
+                    }
+                    conn.Close();
+                }
+            }
         }
     }
 }
